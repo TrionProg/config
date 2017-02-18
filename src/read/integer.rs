@@ -1,4 +1,4 @@
-use Location;
+use super::Location;
 
 pub struct Integer{
     pub location:Location,

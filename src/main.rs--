@@ -1,5 +1,22 @@
 extern crate config;
 
+use config::Writer;
+use std::fs::File;
+use std::io::Write;
+
+struct Wri{
+    output:File,
+}
+
+impl Writer for Wri{
+    fn write_str<'a>(&mut self, text:&str) -> Result<(),config::Error<'a>>{
+        match self.output.write_all(text.as_bytes()) {
+            Ok ( _ ) => Ok(()),
+            Err( e ) => Err( config::Error::WriteIOResult(e) ),
+        }
+    }
+}
+
 fn foo(text:&str) -> Result<(),config::Error>{
     let config=config::Config::parse(text)?;
 
@@ -16,6 +33,11 @@ fn foo(text:&str) -> Result<(),config::Error>{
             }
         }
     }
+
+    let mut file=File::create("out.txt").unwrap();
+    let mut wri=Wri{output:file};
+
+    config.write(&mut wri).unwrap();
 
     Ok(())
 }

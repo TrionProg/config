@@ -1,9 +1,10 @@
 use lexer;
 
-use Error;
+use super::Error;
 use lexer::stream_lexer::Lexeme;
-use CursorExt;
-use Location;
+use super::CursorExt;
+
+use super::Location;
 
 pub struct Float{
     pub location:Location,

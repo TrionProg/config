@@ -2,18 +2,18 @@ use std;
 use lexer;
 
 use lexer::stream_lexer::Lexeme;
-use CursorExt;
+use super::CursorExt;
 
-use Error;
-use Location;
+use super::Error;
+use super::Location;
 
-use Integer;
-use Float;
-use Text;
-use Association;
-use Enum;
-use List;
-use Struct;
+use super::Integer;
+use super::Float;
+use super::Text;
+use super::Association;
+use super::Enum;
+use super::List;
+use super::Struct;
 
 pub enum Node<'a>{
     Integer(Integer),
@@ -25,13 +25,9 @@ pub enum Node<'a>{
     Struct(Struct<'a>),
 }
 
-//IDEA:add Option or enums = Some(...)
-
 impl<'a> Node<'a> {
     ///Decodes Node starting with cur.lex. After call cur.lex is lexeme after Node
     pub fn parse( cur:& mut lexer::stream_lexer::Cursor<'a> ) -> Result<Node<'a>, Error<'a>>{
-        //TODO:Add association
-        //TODO:Add floats
         let location=Location::new(cur);
 
         let node=match cur.lex {

@@ -1,4 +1,4 @@
-use Location;
+use super::Location;
 
 pub struct Text<'a>{
     pub location:Location,

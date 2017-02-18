@@ -1,5 +1,5 @@
- use std;
- use lexer;
+use std;
+use lexer;
 
 #[derive(Debug,Clone)]
 pub struct Location{

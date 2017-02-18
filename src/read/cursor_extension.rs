@@ -1,7 +1,7 @@
 
 use lexer;
 
-use Error;
+use super::Error;
 use lexer::stream_lexer::{Lexeme,Cursor};
 
 pub trait CursorExt<'a>{

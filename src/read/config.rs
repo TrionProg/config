@@ -1,16 +1,16 @@
 use std;
 use lexer;
 
-use Error;
-use Location;
+use super::Error;
+use super::Location;
 
-use Integer;
-use Float;
-use Text;
-use Association;
-use Enum;
-use List;
-use Struct;
+use super::Integer;
+use super::Float;
+use super::Text;
+use super::Association;
+use super::Enum;
+use super::List;
+use super::Struct;
 
 pub struct Config<'a>{
     root:Struct<'a>,
@@ -56,6 +56,5 @@ impl<'a> Config<'a>{
     pub fn get_struct(&self,field_name:&'a str) -> Result<&Struct<'a>,Error<'a>>{
         self.root.get_struct(field_name)
     }
-
 
 }

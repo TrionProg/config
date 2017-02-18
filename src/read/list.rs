@@ -1,14 +1,12 @@
 use std;
 use lexer;
 
-use Error;
+use super::Error;
 use lexer::stream_lexer::Lexeme;
-use CursorExt;
+use super::CursorExt;
 
-use Location;
-use Node;
-use Struct;
-use Association;
+use super::Location;
+use super::Node;
 
 pub struct List<'a>{
     pub name: Option<&'a str>,

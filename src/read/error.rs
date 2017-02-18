@@ -1,7 +1,7 @@
 use std;
 use lexer;
 
-use Location;
+use super::Location;
 
 ///Describes what error has been occured and where
 #[derive(Debug)]
@@ -18,9 +18,13 @@ pub enum Error<'a>{
     ExpectedEnum(Location, &'static str),
     ExpectedList(Location, &'static str),
     ExpectedStruct(Location, &'static str),
-    
+
+    ReadIOResult(std::io::Error),
+
     Other(String),
 }
+
+//TODO: Other must stora location or line
 
 impl<'a> std::fmt::Display for Error<'a>{
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
@@ -41,6 +45,8 @@ impl<'a> std::fmt::Display for Error<'a>{
             Error::ExpectedEnum(ref location, found) => write!(f, "{} Expected enumeration, but {} has been found", location, found),
             Error::ExpectedList(ref location, found) => write!(f, "{} Expected list, but {} has been found", location, found),
             Error::ExpectedStruct(ref location, found) => write!(f, "{} Expected struct, but {} has been found", location, found),
+
+            Error::ReadIOResult(ref e) => write!(f, "IO Read Error:{}", e),
 
             Error::Other(ref message) => write!(f, "{}\n", message),
         }

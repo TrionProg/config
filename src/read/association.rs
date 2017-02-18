@@ -1,14 +1,12 @@
 use std;
 use lexer;
 
-use Error;
+use super::Error;
 use lexer::stream_lexer::Lexeme;
-use CursorExt;
+use super::CursorExt;
 
-use Location;
-use Node;
-use List;
-use Struct;
+use super::Location;
+use super::Node;
 
 pub struct Association<'a>{
     pub location:Location,

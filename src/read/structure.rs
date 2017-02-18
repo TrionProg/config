@@ -1,19 +1,19 @@
 use std;
 use lexer;
 
-use Error;
+use super::Error;
 use lexer::stream_lexer::Lexeme;
-use CursorExt;
+use super::CursorExt;
 
-use Location;
+use super::Location;
 
-use Integer;
-use Float;
-use Text;
-use Association;
-use Enum;
-use List;
-use Node;
+use super::Integer;
+use super::Float;
+use super::Text;
+use super::Association;
+use super::Enum;
+use super::List;
+use super::Node;
 
 use std::collections::BTreeMap;
 use std::collections::btree_map::Entry;
@@ -118,6 +118,4 @@ impl<'a> Struct<'a> {
             None => Err( Error::StructContainsNoField(self.location.clone(), self.name, field_name) )
         }
     }
-
-    //TODO: add reders
 }
