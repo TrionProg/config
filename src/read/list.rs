@@ -33,7 +33,7 @@ impl<'a> List<'a>{
             match cur.lex {
                 Lexeme::Bracket(']') => break,
                 Lexeme::Comma => {cur.next_lexeme()?;},
-                _ => return Err( Error::UnexpectedLexeme(cur.get_line(),cur.lex.clone(),"',' or ']'") ),
+                _ => {},
             }
         }
 
