@@ -22,7 +22,7 @@ impl<'a,W:std::io::Write> Writer<'a,W>{
     }
 
     pub fn write_text(&mut self, text:&str) -> Result<(),Error>{
-        if text.contains(char::is_whitespace) {//TODO: replace to only alpha|digit|_ , add shielding
+        if text.contains(char::is_whitespace) | text.contains('.') {//TODO: replace to only alpha|digit|_ , add shielding
             self.write_str( format!("\"{}\"",text).as_str() )
         }else{
             self.write_str(text)

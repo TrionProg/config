@@ -35,7 +35,7 @@ impl<'a> std::fmt::Display for Error<'a>{
             Error::StructContainsNoField(ref location, ref struct_name, field_name) => {
                 match *struct_name{
                     Some( struct_name ) => write!(f, "{} Struct \"{}\" does not contains field \"{}\"", location, struct_name, field_name),
-                    None => write!(f, "{} Unonimous struct does not contains field \"{}\"", location, field_name),
+                    None => write!(f, "{} Anonymous struct does not contains field \"{}\"", location, field_name),
                 }
             },
             Error::ExpectedInteger(ref location, found) => write!(f, "{} Expected integer, but {} has been found", location, found),
